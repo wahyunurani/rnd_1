@@ -1,13 +1,12 @@
 <?php 
-index.php?pesan=input
-if(isset($_GET['pesan'])){
-	$pesan = $_GET['pesan'];
-	if($pesan == "input"){
-		echo "Data berhasil di input.";
-	}else if($pesan == "update"){
-		echo "Data berhasil di update.";
-	}else if($pesan == "hapus"){
-		echo "Data berhasil di hapus.";
-	}
-}
+ 
+include 'koneksi.php';
+$id = $_POST['id'];
+$nama = $_POST['nama'];
+$alamat = $_POST['alamat'];
+$pekerjaan = $_POST['pekerjaan'];
+ 
+mysqli_query($host, "UPDATE user SET nama='$nama', alamat='$alamat', pekerjaan='$pekerjaan' WHERE id='$id'");
+ 
+header("location:index.php?pesan=update");
 ?>
